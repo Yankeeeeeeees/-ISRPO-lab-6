@@ -128,43 +128,56 @@ class Program
 
         
 
-
-
-        // int secretCode = 1337;
-        // int attempts = 0;
-        // int maxAttempts = 5;
-
-        // do
+        // for (int i = 1; i <=30; i++)
         // {
-        //     Console.Write("Введите число:");
-        //     int guess = Convert.ToInt32(Console.ReadLine());
-        //     if (guess == secretCode)
-        //     {
-        //         Console.WriteLine("Поздравляем! Вы угадали число.");
-        //         break;
-        //     }
-        //     if (guess < secretCode)
-        //     {
-        //         attempts++;
-        //         Console.WriteLine($"Слишком маленькое число. Осталось попыток: {maxAttempts - attempts}");
-        //     }
-        //     else if (guess > secretCode)
-        //     {
-        //         attempts++;
-        //         Console.WriteLine($"Слишком большое число. Осталось попыток: {maxAttempts - attempts}");
-        //     }
-
+        //     if (i % 3 ==0) continue;
+        //     if (i % 10 == 0 && i > 30) break;
+        //     Console.WriteLine(i);
         // }
-        // while (attempts < maxAttempts);
 
 
 
+        int secretCode = 1337;
+        int attempts = 0;
+        int maxAttempts = 5;
 
-        for (int i = 1; i <=30; i++)
-        {
-            if (i % 3 ==0) continue;
-            if (i % 10 == 0 && i > 30) break;
-            Console.WriteLine(i);
+        do
+        {   
+            if (attempts == maxAttempts)
+            {
+                Console.WriteLine("Попытки закончились. Вы проиграли. Число было: " + secretCode);
+                break;
+            }
+            Console.Write("Введите число:");
+            int guess = Convert.ToInt32(Console.ReadLine());
+
+            if (guess == secretCode)
+            {
+                Console.WriteLine("Поздравляем! Вы угадали число. Количество попыток: " + attempts);
+                break;
+            }
+            if (guess < secretCode)
+            {
+                attempts++;
+                Console.WriteLine($"Слишком маленькое число. Осталось попыток: {maxAttempts - attempts}");
+            }
+            else if (guess > secretCode)
+            {
+                attempts++;
+                Console.WriteLine($"Слишком большое число. Осталось попыток: {maxAttempts - attempts}");
+            }
+
+            if (attempts == maxAttempts)
+            {
+                Console.WriteLine("Попытки закончились. Вы проиграли. Число было: " + secretCode);
+                break;
+            }
+            
+
         }
+        while (attempts < maxAttempts);
+
+
+
     }
 }
